@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unblock Request</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f0e6ff; /* Light purple background */
+            font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+            text-align: center;
+        }
+        .message-container {
+            background: white;
+            padding: 20px;
+            border: 2px solid #cc99ff;
+            border-radius: 15px;
+        }
+        h1 {
+            color: #9933ff;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            background: #9933ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #6600cc;
+        }
+    </style>
+    <script>
+        function moveButton() {
+            const noButton = document.getElementById('noButton');
+            const container = document.querySelector('.message-container');
+            const containerRect = container.getBoundingClientRect();
+            const buttonRect = noButton.getBoundingClientRect();
+            const maxX = containerRect.width - buttonRect.width;
+            const maxY = containerRect.height - buttonRect.height;
+
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+
+            noButton.style.position = 'absolute';
+            noButton.style.left = randomX + 'px';
+            noButton.style.top = randomY + 'px';
+        }
+
+        function redirectToYes() {
+            window.location.href='yes.html';
+        }
+    </script>
+</head>
+<body>
+    <div class="message-container">
+        <h1>Will you unblock me now sweetheart?</h1>
+        <div class="button-container">
+            <button onclick="redirectToYes()">Yes</button>
+            <button id="noButton" onclick="moveButton()">No</button>
+        </div>
+    </div>
+</body>
+</html>
